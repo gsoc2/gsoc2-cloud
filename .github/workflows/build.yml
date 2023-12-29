@@ -1,6 +1,7 @@
 name: Auto Convert GitLab CI to GitHub Actions
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - '**/.gitlab-ci.yml'
