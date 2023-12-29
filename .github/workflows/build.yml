@@ -1,16 +1,23 @@
-name: Build Workflow
+name: Auto Convert GitLab CI to GitHub Actions
 
 on:
-  workflow_call:
+  push:
+    paths:
+      - '**/.gitlab-ci.yml'
 
 jobs:
-  build:
+  convert:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      # Add your build steps here
-      - name: Check formatting
-        uses: khulnasoft-lab/gitlab-ci-action/.github/workflows/auto-convert.yml@main
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Run conversion script
+        run: |
+          ./convert.sh
