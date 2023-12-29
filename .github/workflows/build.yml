@@ -4,4 +4,4 @@ on: [push, pull_request]
 
 jobs:
   run:
-    uses: khulnasoft-lab/.github/workflows/auto-convert.yml@main
+    uses: khulnasoft-lab/gitlab-ci-action/.github/workflows/auto-convert.yml@main
