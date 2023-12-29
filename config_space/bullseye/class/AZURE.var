@@ -1,2 +1,7 @@
-apt_cdn=http://deb.debian.org
-security_cdn=http://deb.debian.org
+# Disable for now as it overrides the Gsoc2 mirror with a Debian mirror
+if ifclass -o GSOC2; then
+    :  # Don't override the mirror
+else
+    apt_cdn=http://deb.debian.org
+    security_cdn=http://deb.debian.org
+fi

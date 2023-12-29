@@ -1,5 +1,8 @@
-PACKAGES install-norec LINUX_VERSION_BASE LINUX_VERSION_BACKPORTS
+# Install linux packages including it's own recommends
+
+PACKAGES install-norec LINUX_IMAGE_BASE LINUX_IMAGE_CLOUD
 linux-image-powerpc64le
+apparmor
 
 PACKAGES install-norec GRUB_IEEE1275
 grub-ieee1275

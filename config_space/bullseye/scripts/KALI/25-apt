@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "Before:"
+cat $FAI_ROOT/etc/apt/sources.list
+
+sed -i \
+    -e 's|http://.*/gsoc2 |http://gsoc2.download/gsoc2 |g' \
+    -e 's/gsoc2-last-snapshot/gsoc2-rolling/g' \
+    $FAI_ROOT/etc/apt/sources.list
+
+echo "After:"
+cat $FAI_ROOT/etc/apt/sources.list
+
+chroot $FAI_ROOT apt-get update

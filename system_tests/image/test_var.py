@@ -12,11 +12,41 @@ class TestVar:
             'faillog',
             'journal',  # systemd persistent journal
             'lastlog',
-            'private',
             'runit',
             'unattended-upgrades',
-            'wtmp',
             'README',
+            'private',
+            'wtmp',
+            # From gsoc2-linux-headless
+            'apache2',
+            'fontconfig.log',
+            'inetsim',
+            'mysql',
+            'nginx',
+            'openvpn',
+            'postgresql',
+            'samba',
+            'stunnel4',
+            'sysstat',
+            # From gsoc2-desktop-large
+            'chkrootkit',
+            'dradis',
+            # From gsoc2-linux-everything
+            'defectdojo',
+            'eaphammer',
+            'exim4',
+            'freeradius',
+            'freeradius-wpe',
+            'fsck',
+            'gvm',
+            'hostapd-wpe',
+            'redis',
+            'redsnarf',
+            'tor',
+            # From gsoc2-desktop-core
+            'speech-dispatcher',
+            # From gsoc2-desktop-kde
+            'sddm.log',
         ))
 
         assert len(c) == 0, '/var/log contains unexpected files: {}'.format(', '.join(c))

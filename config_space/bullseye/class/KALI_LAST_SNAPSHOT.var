@@ -1,0 +1,3 @@
+SUITE=gsoc2-last-snapshot
+FAI_DEBOOTSTRAP="$SUITE $apt_cdn/gsoc2/"
+CLASS_BUILD="GSOC2_BUILD"

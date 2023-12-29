@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from libcloud.common.aws import SignedAWSConnection, AWSDriver
 from libcloud.common.exceptions import BaseHTTPError
@@ -43,4 +44,4 @@ class SSMConnection(SignedAWSConnection):
             )
         except BaseHTTPError as e:
             logging.error(f'Unable to set variable {name}: {e.message}')
-            raise
+            sys.exit(1)

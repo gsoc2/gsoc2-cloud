@@ -12,7 +12,6 @@ from debian_cloud_images.images.azure_partnerlegacy.s1_offer import ImagesAzureP
 from debian_cloud_images.utils.libcloud.common.azure import AzureGenericOAuth2Connection
 
 from .base import BaseCommand
-from typing import Optional
 
 
 class ControlAzurePartnerlegacyCommand(BaseCommand):
@@ -75,7 +74,7 @@ config options:
             self, *,
             impl: typing.Callable[[ControlAzurePartnerlegacyCommand, ImagesAzurePartnerlegacyOffer], None],
             partner_offer: str,
-            slot: Optional[str] = None,
+            slot: str = None,
             **kw,
     ) -> None:
         super().__init__(**kw)

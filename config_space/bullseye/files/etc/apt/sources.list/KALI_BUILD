@@ -1,0 +1,1 @@
+deb {%apt_cdn%}/gsoc2 {%SUITE%} main contrib non-free non-free-firmware

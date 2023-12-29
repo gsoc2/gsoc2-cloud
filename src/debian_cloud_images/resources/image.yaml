@@ -7,63 +7,92 @@ kind: ImageConfig
 archs:
 - name: amd64
   azureName: X64
-  faiClasses: [AMD64, GRUB_CLOUD_AMD64]
+  fai_classes: [AMD64, GRUB_CLOUD_AMD64]
 - name: arm64
   azureName: Arm64
-  faiClasses: [ARM64, GRUB_EFI_ARM64]
+  fai_classes: [ARM64, GRUB_EFI_ARM64]
 - name: ppc64el
-  faiClasses: [PPC64EL, GRUB_IEEE1275]
+  fai_classes: [PPC64EL, GRUB_IEEE1275]
 
 releases:
 - name: buster
   basename: buster
   id: '10'
   baseid: '10'
-  faiClasses: [BUSTER, LINUX_VERSION_BUSTER, EXTRAS]
-  matches:
-  - matchArches: [amd64, arm64]
+  fai_classes: [BUSTER, EXTRAS]
+  arch_supports_linux_image_cloud: [amd64]
 - name: buster-backports
   basename: buster-backports
   id: 10-backports
   baseid: '10'
-  faiClasses: [BUSTER, LINUX_VERSION_BUSTER_LTS, EXTRAS]
-  matches:
-  - matchArches: [amd64, arm64]
+  fai_classes: [BUSTER, BACKPORTS_LINUX, EXTRAS]
+  arch_supports_linux_image_cloud: [amd64, arm64]
 - name: bullseye
   basename: bullseye
   id: '11'
   baseid: '11'
-  faiClasses: [BULLSEYE, LINUX_VERSION_BASE, EXTRAS]
+  fai_classes: [BULLSEYE, EXTRAS]
+  arch_supports_linux_image_cloud: [amd64, arm64]
 - name: bullseye-backports
   basename: bullseye-backports
   id: 11-backports
   baseid: '11'
-  faiClasses: [BULLSEYE, LINUX_VERSION_BACKPORTS, EXTRAS]
+  fai_classes: [BULLSEYE, BACKPORTS_LINUX, EXTRAS]
+  arch_supports_linux_image_cloud: [amd64, arm64]
 - name: bookworm
   basename: bookworm
   id: '12'
   baseid: '12'
-  faiClasses: [BOOKWORM, LINUX_VERSION_BASE, EXTRAS]
-- name: bookworm-backports
-  basename: bookworm-backports
-  id: 12-backports
-  baseid: '12'
-  faiClasses: [BOOKWORM, LINUX_VERSION_BACKPORTS, EXTRAS]
-- name: trixie
-  basename: trixie
-  id: '13'
-  baseid: '13'
-  faiClasses: [TRIXIE, LINUX_VERSION_BASE, EXTRAS]
+  fai_classes: [BOOKWORM, EXTRAS]
+  arch_supports_linux_image_cloud: [amd64, arm64]
 - name: sid
   basename: sid
   id: sid
   baseid: sid
-  faiClasses: [SID, LINUX_VERSION_BASE, EXTRAS]
+  fai_classes: [SID, EXTRAS]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: gsoc2-rolling
+  basename: gsoc2-rolling
+  id: gsoc2-rolling
+  baseid: gsoc2-rolling
+  fai_classes: [GSOC2, GSOC2_EXTRAS, GSOC2_ROLLING]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: gsoc2-rolling-minimal
+  basename: gsoc2-rolling
+  id: gsoc2-rolling
+  baseid: gsoc2-rolling
+  fai_classes: [GSOC2, GSOC2_ROLLING]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: gsoc2-last-snapshot
+  basename: gsoc2-last-snapshot
+  id: gsoc2-last-snapshot
+  baseid: gsoc2-last-snapshot
+  fai_classes: [GSOC2, GSOC2_EXTRAS, GSOC2_LAST_SNAPSHOT]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: gsoc2-last-snapshot-minimal
+  basename: gsoc2-last-snapshot
+  id: gsoc2-last-snapshot
+  baseid: gsoc2-last-snapshot
+  fai_classes: [GSOC2, GSOC2_LAST_SNAPSHOT]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: gsoc2-dev
+  basename: gsoc2-dev
+  id: gsoc2-dev
+  baseid: gsoc2-dev
+  fai_classes: [GSOC2, GSOC2_EXTRAS, GSOC2_DEV]
+  arch_supports_linux_image_cloud: [amd64, arm64]
+- name: gsoc2-dev-minimal
+  basename: gsoc2-dev
+  id: gsoc2-dev
+  baseid: gsoc2-dev
+  fai_classes: [GSOC2, GSOC2_DEV]
+  arch_supports_linux_image_cloud: [amd64, arm64]
 
 vendors:
 - name: azure
-  faiClasses: [AZURE, LINUX_VARIANT_CLOUD, TIME_CHRONY, IPV6_DHCP]
-  size: 30
+  fai_classes: [AZURE, IPV6_DHCP]
+  size: 40 # gsoc2-linux-everything is 30GB (at the time of commit!)
+  use_linux_image_cloud: true
   matches:
   - matchArches: [amd64]
   - matchArches: [arm64]
@@ -71,42 +100,46 @@ vendors:
     op: Disable
   - matchArches: [arm64]
 - name: ec2
-  faiClasses: [EC2, LINUX_VARIANT_CLOUD, TIME_SYSTEMD, IPV6_DHCP]
-  size: 8
+  fai_classes: [EC2, IPV6_DHCP]
+  size: 12
+  use_linux_image_cloud: true
   matches:
   - matchArches: [amd64, arm64]
 - name: gce
-  faiClasses: [GCE, LINUX_VARIANT_CLOUD, TIME_SYSTEMD]
-  size: 10
+  fai_classes: [GCE]
+  size: 12
+  use_linux_image_cloud: true
   matches:
   - matchReleases: [bullseye]
     op: Disable
   - matchArches: [amd64]
 - name: generic
-  faiClasses: [GENERIC, LINUX_VARIANT_BASE, TIME_SYSTEMD]
-  size: 2
+  fai_classes: [GENERIC]
+  size: 12
 - name: genericcloud
-  faiClasses: [GENERIC, LINUX_VARIANT_CLOUD, TIME_SYSTEMD]
-  size: 2
+  fai_classes: [GENERIC]
+  size: 12
+  use_linux_image_cloud: true
   matches:
   - matchReleases: [buster]
     matchArches: [arm64]
     op: Disable
   - matchArches: [amd64, arm64]
 - name: nocloud
-  faiClasses: [NOCLOUD, LINUX_VARIANT_BASE, TIME_SYSTEMD]
-  size: 2
+  fai_classes: [NOCLOUD]
+  size: 12
 
 types:
 - name: dev
-  faiClasses: [TYPE_DEV]
-  outputName: 'debian-{release}-{vendor}-{arch}-{build_type}-{build_id}-{version}'
-  outputVersion: '{version}'
-  outputVersionAzure: '0.0.{version!s}'
+  fai_classes: [TYPE_DEV]
+  output_name: 'gsoc2-{release}-{vendor}-{arch}-{build_type}-{build_id}-{version}'
+  output_version: '{version}'
+  output_version_azure: '0.0.{version!s}'
 - name: official
-  outputName: 'debian-{release}-{vendor}-{arch}-{build_type}-{version}'
-  outputVersion: '{date}-{version}'
-  outputVersionAzure: '0.{date!s}.{version!s}'
+  fai_classes: []
+  output_name: 'gsoc2-{release}-{vendor}-{arch}-{build_type}-{version}'
+  output_version: '{date}-{version}'
+  output_version_azure: '0.{date!s}.{version!s}'
 
 publicTypes:
 - name: dev
@@ -125,10 +158,6 @@ publicTypes:
     uploadGroup: debian-12-daily
     op: EnableUpload
   - matchVendors: [azure]
-    matchReleases: [trixie, trixie-backports]
-    uploadGroup: debian-13-daily
-    op: EnableUpload
-  - matchVendors: [azure]
     matchReleases: [sid]
     uploadGroup: debian-sid-daily
     op: EnableUpload
@@ -137,9 +166,7 @@ publicTypes:
   - matchVendors: [generic, genericcloud, nocloud]
 - name: release
   matches:
-  - matchReleases: [sid]
-    op: Disable
-  - matchReleases: [trixie]
+  - matchReleases: [bookworm, bookworm-backports, sid]
     op: Disable
   - matchVendors: [azure]
     matchReleases: [buster, buster-backports]
@@ -148,10 +175,6 @@ publicTypes:
   - matchVendors: [azure]
     matchReleases: [bullseye, bullseye-backports]
     uploadGroup: debian-11
-    op: EnableUpload
-  - matchVendors: [azure]
-    matchReleases: [bookworm, bookworm-backports]
-    uploadGroup: debian-12
     op: EnableUpload
   - matchVendors: [ec2]
     op: EnableUpload

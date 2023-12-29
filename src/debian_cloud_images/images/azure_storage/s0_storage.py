@@ -4,7 +4,6 @@ from debian_cloud_images.utils.libcloud.storage.azure_arm import (
     AzureBlobsOAuth2StorageDriver,
     AzureResourceManagementStorageDriver,
 )
-from typing import Optional
 
 
 logger = logging.getLogger(__name__)
@@ -21,7 +20,7 @@ class AzureStorage:
             resource_group,
             name,
             driver: AzureResourceManagementStorageDriver,
-            driver_storage: Optional[AzureBlobsOAuth2StorageDriver] = None,
+            driver_storage: AzureBlobsOAuth2StorageDriver = None,
     ) -> None:
         self.__name_resource_group = resource_group
         self.__name_storage = name

@@ -2,7 +2,7 @@
 # packages that are commonly useful on a full-featured remote virtual
 # machine or cloud instance.
 
-PACKAGES install-norec
+PACKAGES install
 apt-listchanges
 bash-completion
 bind9-host

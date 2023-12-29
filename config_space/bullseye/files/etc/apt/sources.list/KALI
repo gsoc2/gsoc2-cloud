@@ -1,0 +1,5 @@
+# See https://www.gsoc2.org/docs/general-use/gsoc2-linux-sources-list-repositories/
+deb {%apt_cdn%}/gsoc2 {%SUITE%} main contrib non-free non-free-firmware
+
+# Additional line for source packages
+#deb-src {%apt_cdn%}/gsoc2 {%SUITE%} main contrib non-free non-free-firmware

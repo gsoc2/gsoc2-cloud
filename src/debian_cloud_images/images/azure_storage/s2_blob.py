@@ -11,7 +11,6 @@ from debian_cloud_images.utils.libcloud.storage.azure_arm import (
     AzureBlobsOAuth2StorageDriver,
     AzureResourceManagementStorageDriver,
 )
-from typing import Optional
 
 
 logger = logging.getLogger(__name__)
@@ -32,7 +31,7 @@ class ImagesAzureStorageBlob:
             folder: str,
             name: str,
             driver: AzureResourceManagementStorageDriver,
-            driver_storage: Optional[AzureBlobsOAuth2StorageDriver] = None,
+            driver_storage: AzureBlobsOAuth2StorageDriver = None,
     ) -> None:
         self.__name_resource_group = resource_group
         self.__name_storage = storage
@@ -56,9 +55,9 @@ class ImagesAzureStorageBlob:
     def __request(
             self,
             method: str,
-            data: Optional[typing.Any] = None,
-            headers: Optional[typing.Any] = None,
-            params: Optional[typing.Any] = None,
+            data: typing.Any = None,
+            headers: typing.Any = None,
+            params: typing.Any = None,
     ) -> typing.Any:
         return self.__driver_storage.connection.request(self.path, method=method, data=data, headers=headers, params=params)
 
@@ -130,7 +129,7 @@ class ImagesAzureStorageBlobs(collections.abc.Mapping):
             storage: str,
             name: str,
             driver: AzureResourceManagementStorageDriver,
-            driver_storage: Optional[AzureBlobsOAuth2StorageDriver] = None,
+            driver_storage: AzureBlobsOAuth2StorageDriver = None,
     ) -> None:
         self.__name_resource_group = resource_group
         self.__name_storage = storage

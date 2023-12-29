@@ -1,0 +1,5 @@
+apt_cdn=http://http.gsoc2.org
+# NB: we discard existing debootstrap opts that were set in DEBIAN.var:
+# that's on purpose, it sets '--variant minbase' and we don't want that,
+# for Gsoc2 we want to install packages with 'Priority: important'.
+FAI_DEBOOTSTRAP_OPTS="--include=gsoc2-archive-keyring"

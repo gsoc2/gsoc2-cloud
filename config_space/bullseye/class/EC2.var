@@ -1,1 +1,6 @@
-apt_cdn=http://cdn-aws.deb.debian.org
+# Disable for now as it overrides the Gsoc2 mirror with a Debian mirror
+if ifclass -o GSOC2; then
+    :  # Don't override the mirror
+else
+    apt_cdn=http://cdn-aws.deb.debian.org
+fi

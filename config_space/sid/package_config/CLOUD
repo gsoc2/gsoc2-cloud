@@ -1,6 +1,5 @@
 PACKAGES install-norec
 openssh-server
-ssh-import-id
 cloud-initramfs-growroot
 sudo
 
@@ -10,14 +9,11 @@ libpam-systemd
 libnss-resolve
 netplan.io
 
-# needed for systemd-networkd to set hostnames
-polkitd
-
 unattended-upgrades
 
-# Recommends of linux-image-*
-apparmor
-zstd
+# We're going with chrony as our default ntp client in light of
+# https://lwn.net/Articles/735211/
+chrony
 
 # Packages from important
 apt-utils
@@ -25,13 +21,9 @@ init
 iptables
 iputils-ping
 less
+logrotate
 nano
 netbase
+rsyslog
 vim-tiny
 whiptail
-
-PACKAGES install-norec TIME_CHRONY
-chrony
-
-PACKAGES install-norec TIME_SYSTEMD
-systemd-timesyncd

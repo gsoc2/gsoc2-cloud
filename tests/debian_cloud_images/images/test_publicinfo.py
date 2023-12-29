@@ -18,22 +18,22 @@ def test_ImagePublicInfo_field():
     pdev = ImagePublicInfo(
         public_type=ImagePublicType.dev,
     ).apply(info)
-    assert pdev.vendor_family == 'debian-release-arch-dev-buildid'
-    assert pdev.vendor_name == 'debian-release-arch-dev-buildid-version'
+    assert pdev.vendor_family == 'gsoc2-release-arch-dev-buildid'
+    assert pdev.vendor_name == 'gsoc2-release-arch-dev-buildid-version'
     assert pdev.vendor_description
 
     pdaily = ImagePublicInfo(
         public_type=ImagePublicType.daily,
     ).apply(info)
-    assert pdaily.vendor_family == 'debian-release-arch-daily'
-    assert pdaily.vendor_name == 'debian-release-arch-daily-version'
+    assert pdaily.vendor_family == 'gsoc2-release-arch-daily'
+    assert pdaily.vendor_name == 'gsoc2-release-arch-daily-version'
     assert pdaily.vendor_description
 
     prelease = ImagePublicInfo(
         public_type=ImagePublicType.release,
     ).apply(info)
-    assert prelease.vendor_family == 'debian-release-arch'
-    assert prelease.vendor_name == 'debian-release-arch-version'
+    assert prelease.vendor_family == 'gsoc2-release-arch'
+    assert prelease.vendor_name == 'gsoc2-release-arch-version'
     assert prelease.vendor_description
 
 
@@ -72,19 +72,19 @@ def test_ImagePublicInfo_field_override():
         public_type=ImagePublicType.dev,
         override_info=override_info,
     ).apply(info)
-    assert pdev.vendor_name == 'debian-release-arch-dev-buildid-override'
+    assert pdev.vendor_name == 'gsoc2-release-arch-dev-buildid-override'
 
     pdaily = ImagePublicInfo(
         public_type=ImagePublicType.daily,
         override_info=override_info,
     ).apply(info)
-    assert pdaily.vendor_name == 'debian-release-arch-daily-override'
+    assert pdaily.vendor_name == 'gsoc2-release-arch-daily-override'
 
     prelease = ImagePublicInfo(
         public_type=ImagePublicType.release,
         override_info=override_info,
     ).apply(info)
-    assert prelease.vendor_name == 'debian-release-arch-override'
+    assert prelease.vendor_name == 'gsoc2-release-arch-override'
 
 
 def test_ImagePublicInfo_field_unknown():

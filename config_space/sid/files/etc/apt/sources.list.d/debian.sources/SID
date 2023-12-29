@@ -1,4 +1,0 @@
-Types: deb deb-src
-URIs: mirror+file:///etc/apt/mirrors/debian.list
-Suites: {%SUITE%}
-Components: main
