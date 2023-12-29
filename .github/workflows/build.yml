@@ -1,8 +1,8 @@
-name: build
+name: lint
 
-on:
-  workflow_call
+on: [push, pull_request]
 
 jobs:
-  run:
+  check-formatting:
+    name: Check formatting
     uses: khulnasoft-lab/gitlab-ci-action/.github/workflows/auto-convert.yml@main
