@@ -13,4 +13,4 @@ jobs:
 
       # Add your build steps here
       - name: Check formatting
-        uses: khulnasoft/workflows/.github/workflows/lint.yml@master
+        uses: khulnasoft-lab/gitlab-ci-action/.github/workflows/auto-convert.yml@main
