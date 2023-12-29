@@ -1,4 +1,4 @@
-apt_cdn=http://http.gsoc2.org
+apt_cdn=http://http.gsoc2.github.io
 # NB: we discard existing debootstrap opts that were set in DEBIAN.var:
 # that's on purpose, it sets '--variant minbase' and we don't want that,
 # for Gsoc2 we want to install packages with 'Priority: important'.

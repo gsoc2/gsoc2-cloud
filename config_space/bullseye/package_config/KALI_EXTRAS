@@ -3,7 +3,7 @@
 # machine or cloud instance.
 #
 # You can customize the set of Gsoc2 metapackages (groups of tools) available
-# For the complete list see: https://www.gsoc2.org/tools/gsoc2-meta/
+# For the complete list see: https://www.gsoc2.github.io/tools/gsoc2-meta/
 
 PACKAGES install
 gsoc2-linux-headless

@@ -65,8 +65,8 @@ cases. Each type of image can be built with the following command:
     # make image_<suite>_<type>_<arch>
 ```
 
-where `<suite>` is one of `gsoc2-rolling`, `gsoc2-last-snapshot`, or `gsoc2-dev` to switch [branches](https://www.gsoc2.org/docs/general-use/gsoc2-branches/).
-You can also add `-minimal` at the end of `<suite>`, to create an image without any [metapackages](https://www.gsoc2.org/tools/gsoc2-meta/).
+where `<suite>` is one of `gsoc2-rolling`, `gsoc2-last-snapshot`, or `gsoc2-dev` to switch [branches](https://www.gsoc2.github.io/docs/general-use/gsoc2-branches/).
+You can also add `-minimal` at the end of `<suite>`, to create an image without any [metapackages](https://www.gsoc2.github.io/tools/gsoc2-meta/).
 `<type>` can be any of the following:
 
  * `azure`: Optimized for Microsoft's cloud computing platform Azure
